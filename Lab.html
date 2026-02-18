@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXON | Lab</title>
+    <link rel="icon" type="image/png" href="https://coin-images.coingecko.com/coins/images/677/large/basic-attention-token.png?1696501867">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --glass: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --accent: #9333ea;
+            --bg: #050505;
+        }
+
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+        html { 
+            zoom: 1.05; 
+            -moz-transform: scale(1.1); 
+            -moz-transform-origin: 0 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: #fff;
+            margin: 0;
+            background-image: 
+                radial-gradient(circle at 50% 0%, rgba(147, 51, 234, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.05) 0%, transparent 40%),
+                linear-gradient(180deg, #080808 0%, #050505 100%);
+            background-attachment: fixed;
+        }
+
+        /* CONSISTENT GLOBAL HEADER */
+        .global-header {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            max-width: 1300px;
+            height: 60px;
+            z-index: 2000;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            padding: 0 30px;
+        }
+
+        .header-content {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .h-left { display: flex; align-items: center; gap: 12px; }
+        .h-logo { height: 20px; filter: drop-shadow(0 0 10px var(--accent)); }
+        .h-title { font-weight: 800; letter-spacing: 2px; font-size: 0.85rem; }
+
+        .main-wrapper { padding-top: 120px; padding-bottom: 150px; text-align: center; }
+
+        header {
+            margin: 20px auto;
+            max-width: 900px;
+            padding: 40px 20px;
+        }
+
+        h1 { 
+            font-size: 3.5rem; font-weight: 800; letter-spacing: -3px; margin: 0;
+            background: linear-gradient(to bottom, #fff 40%, #555);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle { font-size: 0.8rem; color: #444; margin-top: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+
+        /* PAD GRID SCALED TO MATCH CARDS */
+        .soundboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 600px; /* Slimmed down to match the vibe */
+            margin: 0 auto 40px;
+            padding: 20px;
+        }
+
+        .pad {
+            aspect-ratio: 1/1;
+            background: var(--glass);
+            backdrop-filter: blur(30px);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pad:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .pad.active-pad {
+            background: rgba(147, 51, 234, 0.15);
+            border-color: var(--accent);
+            box-shadow: 0 0 30px rgba(147, 51, 234, 0.2);
+        }
+
+        .pad i { font-style: normal; font-size: 1.5rem; }
+        .pad span { font-size: 0.6rem; font-weight: 800; color: #444; margin-top: 10px; text-transform: uppercase; letter-spacing: 1px; }
+        .pad.active-pad span { color: var(--accent); }
+
+        /* FIXED SLIM NAV BAR */
+        .floating-nav-footer {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 750px;
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+
+        .stop-btn {
+            background: none;
+            border: 1px solid #222;
+            color: #555;
+            padding: 12px 30px;
+            border-radius: 100px;
+            cursor: pointer;
+            font-size: 0.65rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .stop-btn:hover { border-color: var(--accent); color: #fff; }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            .soundboard-grid { grid-template-columns: repeat(2, 1fr); }
+            .floating-nav-footer { width: 95%; padding: 10px 20px; }
+            .h-title { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="global-header">
+        <div class="header-content">
+            <div class="h-left">
+                <img src="https://coin-images.coingecko.com/coins/images/677/large/basic-attention-token.png?1696501867" class="h-logo">
+                <span class="h-title">AXON</span>
+            </div>
+            <div class="version-tag" style="font-size: 0.6rem; color: #333; font-weight: 800; letter-spacing: 1px;">© 2026</div>
+        </div>
+    </nav>
+
+    <div class="main-wrapper">
+        <header>
+            <h1>THE LAB</h1>
+            <p class="subtitle">Interactive Ambient Mixology</p>
+        </header>
+
+        <div class="soundboard-grid">
+            <div class="pad" onclick="toggleSound('https://actions.google.com/sounds/v1/weather/light_rain.ogg', this)"><i>🌧️</i><span>Rain</span></div>
+            <div class="pad" onclick="toggleSound('https://actions.google.com/sounds/v1/ambiences/fire.ogg', this)"><i>🔥</i><span>Fire</span></div>
+            <div class="pad" onclick="toggleSound('https://actions.google.com/sounds/v1/water/waves_crashing_on_rock_beach.ogg', this)"><i>🌊</i><span>Waves</span></div>
+            <div class="pad" onclick="toggleSound('https://actions.google.com/sounds/v1/weather/wind_on_video_camera_mic.ogg', this)"><i>🍃</i><span>Wind</span></div>
+            <div class="pad" onclick="toggleSound('https://actions.google.com/sounds/v1/office/keyboard_typing_fast_close.ogg', this)"><i>⌨️</i><span>Keys</span></div>
+            <div class="pad" onclick="toggleSound('https://actions.google.com/sounds/v1/alarms/spaceship_alarm.ogg', this)"><i>🚨</i><span>Alarm</span></div>
+        </div>
+
+        <button class="stop-btn" onclick="stopAll()">Kill Audio Feed</button>
+    </div>
+
+    <nav class="floating-nav-footer">
+        <div style="font-size: 0.8rem; font-weight: 800; color: var(--accent);">AXON</div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="About.html">About</a>
+            <a href="Members.html">Members</a>
+            <a href="Sources.html">Sources</a>
+            <a href="Lab.html" class="active">Lab</a>
+        </div>
+    </nav>
+
+    <script>
+        const audioCache = new Map();
+
+        function toggleSound(url, element) {
+            if (url === 'YOUR_LINK_HERE') {
+                alert("Lab Access: Please add your direct .mp3 links to the script!");
+                return;
+            }
+            if (audioCache.has(url)) {
+                const audio = audioCache.get(url);
+                audio.pause();
+                audioCache.delete(url);
+                element.classList.remove('active-pad');
+            } else {
+                const audio = new Audio(url);
+                audio.loop = true;
+                audio.play().catch(e => console.log("Direct link required."));
+                audioCache.set(url, audio);
+                element.classList.add('active-pad');
+            }
+        }
+
+        function stopAll() {
+            audioCache.forEach((audio) => audio.pause());
+            audioCache.clear();
+            document.querySelectorAll('.pad').forEach(p => p.classList.remove('active-pad'));
+        }
+    </script>
+</body>
+</html>
