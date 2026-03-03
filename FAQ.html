@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXON | FAQ</title>
+    <link rel="icon" type="image/png" href="https://coin-images.coingecko.com/coins/images/677/large/basic-attention-token.png?1696501867">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --glass: rgba(255, 255, 255, 0.02); --glass-border: rgba(255, 255, 255, 0.08); --accent: #9333ea; --bg: #050505; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg); }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 100px; border: 2px solid var(--bg); }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+        * { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+        html { zoom: 1.05; -moz-transform: scale(1.05); -moz-transform-origin: 0 0; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: var(--bg); color: #fff; margin: 0; background-image: radial-gradient(circle at 50% 0%, rgba(147, 51, 234, 0.1) 0%, transparent 50%), radial-gradient(circle at 0% 100%, rgba(59, 130, 246, 0.05) 0%, transparent 40%), linear-gradient(180deg, #080808 0%, #050505 100%); background-attachment: fixed; min-height: 100vh; }
+        .global-header { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); width: 95%; max-width: 1300px; height: 60px; z-index: 2000; backdrop-filter: blur(20px); background: rgba(255, 255, 255, 0.02); border: 1px solid var(--glass-border); border-radius: 100px; display: flex; align-items: center; padding: 0 30px; }
+        .header-content { width: 100%; display: flex; justify-content: space-between; align-items: center; }
+        .h-left { display: flex; align-items: center; gap: 12px; }
+        .h-logo { height: 20px; filter: drop-shadow(0 0 10px var(--accent)); }
+        .h-title { font-weight: 800; letter-spacing: 2px; font-size: 0.85rem; }
+        .main-wrapper { padding-top: 120px; padding-bottom: 150px; text-align: center; }
+        header { margin: 20px auto; max-width: 900px; padding: 40px 20px; }
+        h1 { font-size: 3.5rem; font-weight: 800; letter-spacing: -3px; margin: 0; background: linear-gradient(to bottom, #fff 40%, #555); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .subtitle { font-size: 0.8rem; color: #444; margin-top: 10px; font-weight: 800; letter-spacing: 3px; text-transform: uppercase; }
+        .faq-grid { max-width: 700px; margin: 0 auto; padding: 20px; text-align: left; }
+        .faq-item { background: var(--glass); backdrop-filter: blur(30px); border: 1px solid var(--glass-border); border-radius: 24px; margin-bottom: 15px; overflow: hidden; transition: 0.3s; }
+        .faq-item:hover { border-color: var(--accent); }
+        .faq-question { padding: 25px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.5px; }
+        .faq-question i { font-style: normal; transition: 0.3s; color: var(--accent); }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1); background: rgba(255,255,255,0.01); }
+        .faq-answer p { padding: 0 25px 25px 25px; margin: 0; font-size: 0.85rem; color: #888; line-height: 1.6; }
+        .faq-item.active { background: rgba(147, 51, 234, 0.05); border-color: var(--accent); }
+        .faq-item.active .faq-answer { max-height: 200px; }
+        .faq-item.active .faq-question i { transform: rotate(45deg); }
+        .floating-nav-footer { position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 750px; background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 100px; padding: 12px 30px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; }
+        .nav-links { display: flex; gap: 20px; }
+        .nav-links a { color: #666; text-decoration: none; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; transition: 0.3s; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        @media (max-width: 600px) { h1 { font-size: 2.5rem; } .h-title { display: none; } }
+    </style>
+</head>
+<body>
+    <nav class="global-header"><div class="header-content"><div class="h-left"><img src="https://coin-images.coingecko.com/coins/images/677/large/basic-attention-token.png?1696501867" class="h-logo"><span class="h-title">AXON</span></div><div class="version-tag" style="font-size: 0.6rem; color: #333; font-weight: 800; letter-spacing: 1px;">© 2026</div></div></nav>
+    <div class="main-wrapper">
+        <header><h1>INFO CENTER</h1><p class="subtitle">Common Queries & Logic</p></header>
+        <div class="faq-grid">
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">What is AXON?<i>+</i></div><div class="faq-answer"><p>AXON is a high-fidelity interface designed for seamless data visualization and interactive ambient experiences.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Is AXON a paid service? Is there a catch?<i>+</i></div><div class="faq-answer"><p>No. AXON is completely free to use and has no hidden fees or subscriptions. Since we believe in user privacy and open-source principles, we do not monetize any aspect of the platform.</p></div></div>  
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Why are audio previews limited to 30 seconds?<i>+</i></div><div class="faq-answer"><p>To ensure peak performance and compliance with streaming API protocols. This limitation allows for rapid data fetching and lower latency while providing a sufficient "vibe check" for the track.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Why don't the lyrics perfectly align with the playback?<i>+</i></div><div class="faq-answer"><p>Lyrics are pulled from secondary metadata providers. Variations in track versions (Radio Edit vs. Album Version) can cause slight offsets in timestamp synchronization. However users can use "[" and "]" to sync ahead and back the lyrics.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Why is there a delay when searching?<i>+</i></div><div class="faq-answer"><p>AXON pings global databases in real-time. Depending on your network route and the server load of our upstream providers, a 200-500ms handshake is standard for fresh data.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Does AXON store my search history?<i>+</i></div><div class="faq-answer"><p>No. AXON operates on a stateless architecture. Search queries are processed in real-time and are not cached or stored on our servers(search quaries are stored locally on your device) to ensure user privacy.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">What does the name "AXON" actually mean?<i>+</i></div><div class="faq-answer"><p>In biology, an axon is the part of a nerve cell that transmits impulses. Similarly, AXON serves as the bridge between raw musical data and a refined, interactive user experience.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Who is the "Squad" behind the project?<i>+</i></div><div class="faq-answer"><p>AXON is a collaborative effort by a group of developers, designers, researchers, and strategists. We’re a lean team focused on pushing the boundaries of how we interact with digital soundscapes.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Is AXON a streaming service?<i>+</i></div><div class="faq-answer"><p>Not exactly. AXON is a specialized interface and research hub. We don't host the music; we provide a high-end lens to explore and manipulate audio metadata from existing global platforms.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Why is the aesthetic so dark?<i>+</i></div><div class="faq-answer"><p>The "Midnight" theme reduces eye strain and helps the accent colors (like our signature Purple) pop. It’s designed for late-night sessions and deep-focus work.</p></div></div>
+            <div class="faq-item" onclick="toggleFaq(this)"><div class="faq-question">Is this project open-source?<i>+</i></div><div class="faq-answer"><p>We believe in the importance of transparency. So anybody can inspect and contribute to the codebase on our <a href="https://github.com/GovCIA/AXON/tree/main" target="_blank">GitHub repository</a>.</p></div></div>
+        </div>
+    </div>
+    <nav class="floating-nav-footer"><div style="font-size: 0.8rem; font-weight: 800; color: var(--accent);">AXON</div><div class="nav-links"><a href="index.html">Home</a><a href="About.html">About</a><a href="Members.html">Members</a><a href="Sources.html">Sources</a><a href="Lab.html">Lab</a><a href="FAQ.html" class="active">FAQ</a></div></nav>
+    <script>
+        function toggleFaq(el) {
+            const isActive = el.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+            if (!isActive) el.classList.add('active');
+        }
+    </script>
+</body>
+</html>
