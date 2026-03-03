@@ -56,9 +56,7 @@ input[type=range].volume-slider::-webkit-slider-thumb{height:12px;width:12px;bor
 .nav-links{display:flex;gap:20px;}.nav-links a{color:#666;text-decoration:none;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;transition:0.3s;}
 .nav-links a:hover,.nav-links a.active{color:#fff;}
 @media (max-width:600px){h1{font-size:2.5rem;}.h-title{display:none;}}
-</style>
-</head>
-<body>
+</style></head><body>
 <nav class="global-header"><div class="header-content"><a href="index.html" class="h-left"><img src="https://coin-images.coingecko.com/coins/images/677/large/basic-attention-token.png?1696501867" class="h-logo"><span class="h-title">AXON</span></a><div style="font-size:0.6rem;color:#333;font-weight:800;letter-spacing:1px;">© 2026</div></div></nav>
 <div class="main-wrapper">
 <header><h1>AXON</h1><div class="search-wrapper"><input id="searchInput" placeholder="Find your music..." type="text" autocomplete="off"><button id="searchBtn">Search</button></div><div id="history" style="display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:10px;"></div><button onclick="toggleFavs()" style="margin-top:20px;background:none;border:1px solid #333;color:#666;border-radius:100px;padding:6px 18px;cursor:pointer;font-size:0.6rem;font-weight:800;">✦ SAVED</button></header>
@@ -75,7 +73,7 @@ input[type=range].volume-slider::-webkit-slider-thumb{height:12px;width:12px;bor
 <a id="downloadBtn" href="#" download class="icon-btn"><svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg></a><button class="icon-btn" onclick="toggleLyrics()"><svg viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg></button><button class="icon-btn" onclick="closePlayer()" style="background:transparent;border:none;opacity:0.4;"><svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg></button></div>
 <audio id="globalAudio" autoplay style="display:none;"></audio>
 </div>
-<nav class="floating-nav-footer"><div style="font-size:0.8rem;font-weight:800;color:var(--accent);letter-spacing:1px;">AXON</div><div class="nav-links"><a href="index.html" class="active">Home</a><a href="About.html">About</a><a href="Members.html">Members</a><a href="Sources.html">Sources</a><a href="Under.Construction.html">Lab</a></div></nav>
+<nav class="floating-nav-footer"><div style="font-size:0.8rem;font-weight:800;color:var(--accent);letter-spacing:1px;">AXON</div><div class="nav-links"><a href="index.html" class="active">Home</a><a href="About.html">About</a><a href="Members.html">Members</a><a href="Sources.html">Sources</a><a href="Under.Construction.html">Lab</a><a href="FAQ.html">FAQ</a></div></nav>
 <script>
 const input=document.getElementById('searchInput'),grid=document.getElementById('results'),pagControls=document.getElementById('paginationControls'),audio=document.getElementById('globalAudio'),lyricsContainer=document.getElementById('lyricsContainer'),lyricsScrollArea=document.getElementById('lyricsScrollArea'),playIcon=document.getElementById('playIcon'),pauseIcon=document.getElementById('pauseIcon'),progressBar=document.getElementById('progressBar'),downloadBtn=document.getElementById('downloadBtn');
 let allResults=[],filteredResults=[],currentPage=1,itemsPerPage=20,showOnlyFavs=false,currentLyrics=[],lyricOffset=0,history=JSON.parse(localStorage.getItem('axon_history')||'[]'),favorites=JSON.parse(localStorage.getItem('axon_favs')||'[]');
@@ -99,6 +97,4 @@ function toggleFav(id,d){const idx=favorites.findIndex(f=>f.trackId===id);if(idx
 function toggleFavs(){showOnlyFavs=!showOnlyFavs;currentPage=1;render();}
 function changePage(s){currentPage+=s;render();window.scrollTo({top:0,behavior:'smooth'});}
 document.getElementById('searchBtn').onclick=search;input.addEventListener('keydown',(e)=>{if(e.key==='Enter')search();});renderHistory();
-</script>
-</body>
-</html>
+</script></body></html>
